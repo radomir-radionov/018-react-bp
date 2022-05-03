@@ -12,36 +12,36 @@
 
 ## Architecture
 
-- assets
+- **assets**
   - fonts
   - images
-- components (**Components form modules.** This folder for components like a button, input, link and etc.)
+- **components** (**Components form modules.** This folder for components like a button, input, link and etc.)
   - ExampleComponent
     - ExampleComponent.tsx - main file
     - styles.ts - for styled-components
     - types.ts - for types
-- constants (app's general constants)
-- modules (**Modules form pages.** This folder for components like a form, header, footer and etc.)
+- **constants** (app's general constants)
+- **modules** (**Modules form pages.** This folder for components like a form, header, footer and etc.)
   - ExampleModule
     - ExampleModule.tsx - main file
     - styles.ts - for styled-components
     - types.ts - for types
     - data.ts - for auxiliary functions
-- pages (**Pages contain modules which in turn contain components**)
+- **pages** (**Pages contain modules which in turn contain components**)
   - ExamplePage
     - ExamplePage.tsx - main file
     - styles.ts - for styled-components
-- redux
+- **redux**
   - module
     - slice.ts - actions and reducer
     - saga.ts
     - selectors.ts
-- requests - contains requests and interceptors
-- routes
-- store
-- styles - contains design tokents
+- **requests** - contains requests and interceptors
+- **routes**
+- **store**
+- **styles** - contains design tokents
   - breakpoints
   - colors
   - globalStyles
   - typography
-- utils - contains support functions for example hooks and other
+- **utils** - contains support functions for example hooks and other
