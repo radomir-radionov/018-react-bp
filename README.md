@@ -5,7 +5,7 @@
 
 ## Main Libraries
 
-- [redux toolkit](https://redux-toolkit.js.org/) - state manadger
+- [redux toolkit](https://redux-toolkit.js.org/) - state manager
 - [redux-saga](https://redux-saga.js.org/) - side effect manager
 - [react hook form](https://react-hook-form.com/) - processing and validating form
 - [styled-components](https://styled-components.com/) - styles
