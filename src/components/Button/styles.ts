@@ -19,10 +19,12 @@ export const ButtonStyled = styled.button<IProps>`
   color: ${({ $variant }: IProps) =>
     $variant === BUTTON_VARIANTS.PRIMARY ? colors.DAY : colors.AUTUMN_2};
   cursor: ${({ disabled }: IProps) => (disabled ? "default" : "pointer")};
+  transition-duration: 0.3s;
 
   &:hover {
     border-color: ${colors.AUTUMN_1};
     background-color: ${colors.DAY};
+    box-shadow: 2px 4px 8px ${colors.BOX_SHADOW_FOR_BUTTON};
     color: ${colors.AUTUMN_1};
   }
 

@@ -1,3 +1,15 @@
+export { default as DescriptionCard } from "./DescriptionCard/DescriptionCard";
 export { default as ExampleModal } from "./Modal/ExampleModal/ExampleModal";
+export { default as Footer } from "./Footer/Footer";
 export { default as Modal } from "./Modal/Modal";
+export { default as Review } from "./Review/Review";
+export { default as Reviews } from "./Reviews/Reviews";
+export { default as SubmitApplicationInfo } from "./SubmitApplicationInfo/SubmitApplicationInfo";
+export { default as TypesOfWork } from "./TypesOfWork/TypesOfWork";
+export { default as HandWorkerContainer } from "./HandWorkerContainer/HandWorkerContainer";
 export { default as Header } from "./Header/Header";
+export { default as HowWeAreWorkingCards } from "./HowWeAreWorkingCards/HowWeAreWorkingCards";
+export { default as HowWeSearchCards } from "./HowWeSearchCards/HowWeSearchCards";
+export { default as Question } from "./Question/Question";
+export { default as QuestionsAndAnswers } from "./QuestionsAndAnswers/QuestionsAndAnswers";
+export { default as WorkAdvantagesCards } from "./WorkAdvantagesCards/WorkAdvantagesCards";
