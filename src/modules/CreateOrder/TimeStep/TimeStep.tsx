@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createOrderActions } from "redux/createOrder";
 import { CostInformation, SmallCardCheckbox } from "modules";
-import { Button, StepsLine } from "components";
+import { Button, DatePicker, StepsLine, TimePicker } from "components";
 import { BUTTON_VARIANTS } from "components/Button/types";
 import pageRoutes from "constants/pageRoutes";
 import { smallCardsData } from "./data";
@@ -13,6 +13,7 @@ import {
   TimeStepStyled,
   StepsLineWrapper,
   WhatText,
+  TimeTitle,
 } from "./styles";
 import { dateSelector } from "redux/createOrder/selectors";
 
@@ -76,6 +77,10 @@ const TimeStep = () => {
           />
         ))}
       </CheckboxesWrapper>
+      <TimeTitle>Укажите время</TimeTitle>
+      <TimePicker />
+      <br />
+      <DatePicker />
       <ButtonsGroup>
         <Button onClick={goToPreviousStep} variant={BUTTON_VARIANTS.SECONDARY}>
           Назад

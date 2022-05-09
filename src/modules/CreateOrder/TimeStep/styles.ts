@@ -14,6 +14,11 @@ export const WhatText = styled.p`
   ${typography.H4};
 `;
 
+export const TimeTitle = styled.p`
+  margin: 48px 0 12px;
+  ${typography.BODY2};
+`;
+
 export const CheckboxesWrapper = styled.div`
   display: flex;
   margin-bottom: 20px;

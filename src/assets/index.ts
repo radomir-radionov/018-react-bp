@@ -5,6 +5,7 @@ export { ReactComponent as AttentionBlackSVG } from "./images/attention-black.sv
 export { ReactComponent as AttentionOrangeSVG } from "./images/attention-orange.svg";
 export { ReactComponent as RightArrowSVG } from "./images/right-arrow.svg";
 export { ReactComponent as CheckOrangeSVG } from "./images/check-orange.svg";
+export { ReactComponent as ClockSVG } from "./images/clock.svg";
 
 export { ReactComponent as Hexagon_1_SVG } from "./images/hexagon-1.svg";
 export { ReactComponent as Hexagon_2_SVG } from "./images/hexagon-2.svg";

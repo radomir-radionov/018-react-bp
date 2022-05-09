@@ -1,4 +1,4 @@
-import { FunctionComponent, SVGProps, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import {
   AdditionalInput,
   CheckOrangeIcon,
