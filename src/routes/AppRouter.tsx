@@ -1,6 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import pageRoutes from "constants/pageRoutes";
-import { CreateOrder, Main, NotFound, Presentation } from "pages";
+import {
+  CreateOrder,
+  Main,
+  NotFoundError,
+  InternalServerError,
+  Presentation,
+} from "pages";
 import { createOrderRoutes } from "./data";
 
 // import PrivateRoute from './PrivateRoute';
@@ -20,8 +26,18 @@ const AppRouter = () => {
       ))}
 
       <Route path={pageRoutes.PRESENTATION} element={<Presentation />} />
+
+      {/* Errors */}
+      <Route
+        path={pageRoutes.INTERNAL_SERVER}
+        element={<InternalServerError />}
+      />
       {/* Special case: if no route matched - show page 404 */}
-      <Route path={pageRoutes.NOT_FOUND} element={<NotFound />} />
+      <Route path={pageRoutes.NOT_FOUND} element={<NotFoundError />} />
+      <Route
+        path="*"
+        element={<Navigate to={pageRoutes.NOT_FOUND} replace />}
+      />
     </Routes>
   );
 };

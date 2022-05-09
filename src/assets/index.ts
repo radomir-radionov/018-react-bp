@@ -37,6 +37,9 @@ export { ReactComponent as ClientWomen_SVG } from "./images/client-women.svg";
 export { default as SAI_background_1 } from "./images/saiB1.jpg";
 export { default as SAI_background_2 } from "./images/saiB2.jpg";
 
+export { default as BG_404 } from "./images/404.jpg";
+export { default as BG_500 } from "./images/500.jpg";
+
 export { default as WorkType_0 } from "./images/workType_0.jpeg";
 export { default as WorkType_1 } from "./images/workType_1.jpeg";
 export { default as WorkType_2 } from "./images/workType_2.jpeg";

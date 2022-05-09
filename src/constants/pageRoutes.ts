@@ -18,6 +18,7 @@ enum pageRoutes {
   PROFILE = "/account",
   CONTACT = "/contact",
   NOT_FOUND = "/404",
+  INTERNAL_SERVER = "/500",
   PRESENTATION = "/presentation",
 }
 
