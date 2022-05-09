@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, typography } from "styles";
+import { typography } from "styles";
 
 export const MainStyled = styled.div`
   display: flex;
@@ -22,7 +22,6 @@ export const TypesOfWorkWrapper = styled.div`
 export const TypesOfWorkTitle = styled.div`
   margin-bottom: 64px;
   ${typography.H2};
-  color: ${colors.NIGHT_1};
 
   @media (max-width: 670px) {
     ${typography.H4};
@@ -44,7 +43,6 @@ export const ReviewsWrapper = styled.div`
 export const ReviewsTitle = styled.div`
   margin-bottom: 64px;
   ${typography.H2};
-  color: ${colors.NIGHT_1};
 
   @media (max-width: 670px) {
     ${typography.H4};

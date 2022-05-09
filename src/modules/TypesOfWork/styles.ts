@@ -84,5 +84,4 @@ export const TextImage = styled.p`
   border-radius: 4px;
   background-color: ${colors.DAY};
   ${typography.BODY2};
-  color: ${colors.NIGHT_1};
 `;

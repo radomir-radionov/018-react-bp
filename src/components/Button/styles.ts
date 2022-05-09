@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colors, typography } from "styles";
 import { BUTTON_VARIANTS } from "./types";
 
@@ -22,10 +22,14 @@ export const ButtonStyled = styled.button<IProps>`
   transition-duration: 0.3s;
 
   &:hover {
-    border-color: ${colors.AUTUMN_1};
-    background-color: ${colors.DAY};
-    box-shadow: 2px 4px 8px ${colors.BOX_SHADOW_FOR_BUTTON};
-    color: ${colors.AUTUMN_1};
+    ${({ disabled }: IProps) =>
+      !disabled &&
+      css`
+        border-color: ${colors.AUTUMN_1};
+        background-color: ${colors.DAY};
+        box-shadow: 2px 4px 8px ${colors.BOX_SHADOW_FOR_BUTTON};
+        color: ${colors.AUTUMN_1};
+      `};
   }
 
   &:active {

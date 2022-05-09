@@ -18,7 +18,7 @@ const HandWorkerContainer = () => {
   const isMobile: boolean = Boolean(width && width <= 600);
 
   const navigateHandler = () => {
-    navigate(pageRoutes.CREATE_ORDER);
+    navigate(pageRoutes.CREATE_ORDER_CHOOSE_WORK);
   };
 
   return (

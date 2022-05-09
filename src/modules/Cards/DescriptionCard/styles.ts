@@ -19,7 +19,6 @@ export const Title = styled.p`
 
 export const Description = styled.p`
   ${typography.BODY2};
-  color: ${colors.NIGHT_1};
 `;
 
 export const ImplementationDate = styled.p`

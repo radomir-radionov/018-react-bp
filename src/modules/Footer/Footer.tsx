@@ -11,12 +11,10 @@ const Footer = () => {
   };
 
   return (
-    <>
-      <FooterStyled>
-        <LogoIcon onClick={navigateHandler} />
-        <Text>{year}. Все права защищены &copy;</Text>
-      </FooterStyled>
-    </>
+    <FooterStyled>
+      <LogoIcon onClick={navigateHandler} />
+      <Text>{year}. Все права защищены &copy;</Text>
+    </FooterStyled>
   );
 };
 

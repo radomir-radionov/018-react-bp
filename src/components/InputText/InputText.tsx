@@ -12,6 +12,7 @@ interface IProps {
   error?: string;
   label?: string;
   htmlFor?: string;
+  type?: string;
   onChange: (event: ChangeEvent<any>) => void;
   placeholder?: string;
 }
@@ -24,6 +25,7 @@ const InputText = forwardRef(
       error = "",
       label = "",
       htmlFor = "",
+      type = "text",
       onChange,
       placeholder = "",
       ...rest
@@ -41,7 +43,7 @@ const InputText = forwardRef(
           onChange={onChange}
           placeholder={placeholder}
           name={htmlFor}
-          type="text"
+          type={type}
           ref={ref}
           {...rest}
         />

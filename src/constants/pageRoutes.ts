@@ -1,6 +1,12 @@
 enum pageRoutes {
   MAIN = "/",
-  CREATE_ORDER = "/order/create",
+  CREATE_ORDER_CHOOSE_WORK = "/order/choosework",
+  CREATE_ORDER_EMPLOYEES = "/order/employees",
+  CREATE_ORDER_TIME = "/order/time",
+  CREATE_ORDER_DESCRIPTION = "/order/description",
+  CREATE_ORDER_ADDRESS = "/order/address",
+  CREATE_ORDER_NOTIFICATION = "/order/notification",
+
   SIGNIN = "/account/signin",
   SIGNUP = "/account/create",
   SIGNUP_VERIFY = "/account/verify",

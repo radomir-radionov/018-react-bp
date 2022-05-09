@@ -35,7 +35,6 @@ export const QuestionTitle = styled.p`
 export const Answer = styled.p`
   max-width: 572px;
   ${typography.BODY2};
-  color: ${colors.NIGHT_1};
 `;
 
 export const CloseIcon = styled(CloseSVG)<{ $isOpen: boolean }>`

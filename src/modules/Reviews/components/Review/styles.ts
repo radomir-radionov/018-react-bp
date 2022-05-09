@@ -16,7 +16,6 @@ export const Title = styled.p`
 export const Description = styled.p`
   margin-bottom: 32px;
   ${typography.BODY2};
-  color: ${colors.NIGHT_1};
 `;
 
 export const Client = styled.div`
@@ -36,10 +35,8 @@ export const Name = styled.p`
   margin-bottom: 8px;
   ${typography.BODY1};
   font-weight: bold;
-  color: ${colors.NIGHT_1};
 `;
 
 export const Location = styled.p`
   ${typography.BODY2};
-  color: ${colors.NIGHT_1};
 `;

@@ -26,7 +26,7 @@ const Main = () => {
   const navigate = useNavigate();
 
   const goToCreateOrder = () => {
-    navigate(pageRoutes.CREATE_ORDER);
+    navigate(pageRoutes.CREATE_ORDER_CHOOSE_WORK);
   };
 
   return (

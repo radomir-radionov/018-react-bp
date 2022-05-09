@@ -38,12 +38,10 @@ export const InputTextStyled = styled.input<IProps>`
 
   &:focus-visible {
     outline: 2px solid ${colors.AUTUMN_2};
-    color: ${colors.NIGHT_1};
   }
 
   &:focus {
     border-color: ${colors.AUTUMN_2};
-    color: ${colors.NIGHT_1};
   }
 
   &:disabled {

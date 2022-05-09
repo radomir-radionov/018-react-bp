@@ -16,7 +16,6 @@ export const QuestionsAndAnswersStyled = styled.div`
 export const Title = styled.p`
   margin-bottom: 64px;
   ${typography.H2};
-  color: ${colors.NIGHT_1};
 `;
 
 export const QuestionsWrapper = styled.div`

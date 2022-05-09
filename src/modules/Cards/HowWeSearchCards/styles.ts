@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, typography } from "styles";
+import { typography } from "styles";
 
 export const HowWeSearchCardsStyles = styled.div`
   padding: 160px 120px;
@@ -17,7 +17,6 @@ export const HowWeSearchCardsStyles = styled.div`
 export const Title = styled.p`
   margin-bottom: 64px;
   ${typography.H2};
-  color: ${colors.NIGHT_1};
 
   @media (max-width: 670px) {
     ${typography.H4};
