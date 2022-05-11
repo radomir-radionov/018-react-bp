@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { CostInformation } from "modules";
-import { Button, StepsLine } from "components";
+import { Button, Map, StepsLine } from "components";
 import { BUTTON_VARIANTS } from "components/Button/types";
 import pageRoutes from "constants/pageRoutes";
 import {
@@ -32,6 +31,7 @@ const AddressStep = () => {
         <StepsLine step={5} />
       </StepsLineWrapper>
       <WhatText>Введите адрес</WhatText>
+      <Map />
       <ButtonsGroup>
         <Button onClick={goToPreviousStep} variant={BUTTON_VARIANTS.SECONDARY}>
           Назад
@@ -40,7 +40,6 @@ const AddressStep = () => {
           Продолжить
         </Button>
       </ButtonsGroup>
-      <CostInformation />
     </AddressStepStyled>
   );
 };

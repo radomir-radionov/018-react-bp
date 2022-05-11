@@ -11,6 +11,7 @@ enum colors {
   NIGHT_1 = "#403F4D",
   NIGHT_2 = "#9B9AA1",
   NIGHT_4 = "#E1E1E6",
+  TRANSPARENT = "transparent",
 }
 
 export default colors;

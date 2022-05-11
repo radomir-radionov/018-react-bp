@@ -6,6 +6,9 @@ export { ReactComponent as AttentionOrangeSVG } from "./images/attention-orange.
 export { ReactComponent as RightArrowSVG } from "./images/right-arrow.svg";
 export { ReactComponent as CheckOrangeSVG } from "./images/check-orange.svg";
 export { ReactComponent as ClockSVG } from "./images/clock.svg";
+export { ReactComponent as CloseThumbSVG } from "./images/close-thumb.svg";
+export { ReactComponent as DownloadSVG } from "./images/download.svg";
+export { ReactComponent as DownloadHoverSVG } from "./images/download-hover.svg";
 
 export { ReactComponent as Hexagon_1_SVG } from "./images/hexagon-1.svg";
 export { ReactComponent as Hexagon_2_SVG } from "./images/hexagon-2.svg";
@@ -49,3 +52,4 @@ export { default as WorkType_4 } from "./images/workType_4.jpeg";
 
 export { default as MainBannerPoligon_BG } from "./images/main-banner-polygon.png";
 export { default as MainBannerHandWorker_BG } from "./images/hand-worker.png";
+export { default as MarkerGEO } from "./images/marker.png";

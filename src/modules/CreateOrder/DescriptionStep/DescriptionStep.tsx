@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CostInformation } from "modules";
-import { Button, StepsLine } from "components";
+import { Button, ImageUploader, StepsLine } from "components";
 import { BUTTON_VARIANTS } from "components/Button/types";
 import pageRoutes from "constants/pageRoutes";
 import {
@@ -8,6 +8,7 @@ import {
   Description,
   DescriptionStepStyled,
   StepsLineWrapper,
+  UploaderWrapper,
   WhatText,
 } from "./styles";
 
@@ -38,6 +39,9 @@ const DescriptionStep = () => {
         уточняющими файлами. Это поможет мастеру лучше оценить задачу, а сервису
         указать максимально точную стоимость услуг
       </Description>
+      <UploaderWrapper>
+        <ImageUploader />
+      </UploaderWrapper>
       <ButtonsGroup>
         <Button onClick={goToPreviousStep} variant={BUTTON_VARIANTS.SECONDARY}>
           Назад

@@ -15,8 +15,13 @@ export const WhatText = styled.p`
 `;
 
 export const Description = styled.p`
+  margin-bottom: 32px;
   max-width: 730px;
   ${typography.BODY2};
+`;
+
+export const UploaderWrapper = styled.div`
+  width: 730px;
 `;
 
 export const ButtonsGroup = styled.div`
