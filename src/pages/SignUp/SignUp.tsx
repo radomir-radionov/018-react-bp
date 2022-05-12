@@ -1,4 +1,4 @@
-import { Header, SignUpForm } from "modules";
+import { Header, SignUpClientForm } from "modules";
 import { Content, SignUpStyled } from "./styles";
 
 const SignUp = () => {
@@ -6,7 +6,7 @@ const SignUp = () => {
     <SignUpStyled>
       <Header />
       <Content>
-        <SignUpForm />
+        <SignUpClientForm />
       </Content>
     </SignUpStyled>
   );

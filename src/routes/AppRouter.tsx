@@ -7,7 +7,7 @@ import {
   InternalServerError,
   SignIn,
   SignUp,
-  Presentation,
+  Verify,
 } from "pages";
 import { createOrderRoutes } from "./data";
 
@@ -23,14 +23,13 @@ const AppRouter = () => {
       <Route path={pageRoutes.MAIN} element={<Main />} />
 
       <Route path={pageRoutes.SIGNUP} element={<SignUp />} />
+      <Route path={pageRoutes.VERIFY} element={<Verify />} />
       <Route path={pageRoutes.SIGNIN} element={<SignIn />} />
 
       {/* Create Order Routes */}
       {createOrderRoutes.map((path, index) => (
         <Route key={index} path={path} element={<CreateOrder />} />
       ))}
-
-      <Route path={pageRoutes.PRESENTATION} element={<Presentation />} />
 
       {/* Errors */}
       <Route

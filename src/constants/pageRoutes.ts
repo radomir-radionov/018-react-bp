@@ -7,15 +7,16 @@ enum pageRoutes {
   CREATE_ORDER_ADDRESS = "/order/address",
   CREATE_ORDER_NOTIFICATION = "/order/notification",
 
+  PROFILE = "/account",
   SIGNIN = "/account/signin",
   SIGNUP = "/account/create",
-  SIGNUP_VERIFY = "/account/verify",
+  VERIFY = "/account/verify",
   FORGOT_PASSWORD = "/account/password/reset",
+
   FAQ = "/faq",
   TERMS_OF_USE = "/terms",
   PRIVACY_POLICY = "/privacy",
   PRIVACY_COOKIES = "/cookies",
-  PROFILE = "/account",
   CONTACT = "/contact",
   NOT_FOUND = "/404",
   INTERNAL_SERVER = "/500",

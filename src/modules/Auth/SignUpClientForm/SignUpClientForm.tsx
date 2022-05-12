@@ -3,6 +3,7 @@ import { Checkbox, InputPassword, InputPhone, InputText } from "components";
 import pageRoutes from "constants/pageRoutes";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { IFormData, schema } from "./data";
 import {
   BottomText,
@@ -12,13 +13,13 @@ import {
   Form,
   InternalLink,
   InternalLinkWhite,
-  SignUpFormStyled,
+  SignUpClientFormStyled,
   Title,
 } from "./styles";
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const [remember, setRemember] = useState<boolean>(true);
-
   const {
     register,
     handleSubmit,
@@ -30,11 +31,12 @@ const SignUpForm = () => {
   };
 
   const onSubmit = (data: IFormData) => {
-    console.log("SignUpFormData", data);
+    console.log("SignUpClientFormData", data);
+    navigate(pageRoutes.VERIFY, { state: { role: "client" } });
   };
 
   return (
-    <SignUpFormStyled>
+    <SignUpClientFormStyled>
       <Title>Регистрация</Title>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <InputText
@@ -89,7 +91,7 @@ const SignUpForm = () => {
         Уже есть аккаунт?!{" "}
         <InternalLink to={pageRoutes.SIGNIN}>Войти</InternalLink>
       </BottomText>
-    </SignUpFormStyled>
+    </SignUpClientFormStyled>
   );
 };
 

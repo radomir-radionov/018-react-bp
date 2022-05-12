@@ -1,7 +1,7 @@
 import { SIGN_BG_1 } from "assets";
 import styled from "styled-components";
 
-export const SignUpStyled = styled.div`
+export const VerifyStyled = styled.div`
   flex: 1;
   background-image: url(${SIGN_BG_1});
   background-repeat: no-repeat;
