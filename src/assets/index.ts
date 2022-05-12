@@ -9,6 +9,9 @@ export { ReactComponent as ClockSVG } from "./images/clock.svg";
 export { ReactComponent as CloseThumbSVG } from "./images/close-thumb.svg";
 export { ReactComponent as DownloadSVG } from "./images/download.svg";
 export { ReactComponent as DownloadHoverSVG } from "./images/download-hover.svg";
+export { ReactComponent as CheckWhiteSVG } from "./images/check-white.svg";
+export { ReactComponent as EyeSVG } from "./images/eye.svg";
+export { ReactComponent as EyeCloseSVG } from "./images/eye_close.svg";
 
 export { ReactComponent as Hexagon_1_SVG } from "./images/hexagon-1.svg";
 export { ReactComponent as Hexagon_2_SVG } from "./images/hexagon-2.svg";
@@ -40,6 +43,7 @@ export { ReactComponent as ClientWomen_SVG } from "./images/client-women.svg";
 
 export { default as SAI_background_1 } from "./images/saiB1.jpg";
 export { default as SAI_background_2 } from "./images/saiB2.jpg";
+export { default as SIGN_BG_1 } from "./images/sign-1.jpg";
 
 export { default as BG_404 } from "./images/404.jpg";
 export { default as BG_500 } from "./images/500.jpg";
@@ -53,3 +57,4 @@ export { default as WorkType_4 } from "./images/workType_4.jpeg";
 export { default as MainBannerPoligon_BG } from "./images/main-banner-polygon.png";
 export { default as MainBannerHandWorker_BG } from "./images/hand-worker.png";
 export { default as MarkerGEO } from "./images/marker.png";
+export { default as CheckWhitePNG } from "./images/check-white.png";

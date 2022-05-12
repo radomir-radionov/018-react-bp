@@ -19,6 +19,7 @@ export { default as Question } from "./QuestionsAndAnswers/components/Question/Q
 export { default as QuestionsAndAnswers } from "./QuestionsAndAnswers/QuestionsAndAnswers";
 export { default as Review } from "./Reviews/components/Review/Review";
 export { default as Reviews } from "./Reviews/Reviews";
+export { default as SignUpForm } from "./SignUp/SignUpForm/SignUpForm";
 export { default as SmallCardCheckbox } from "./Cards/SmallCardCheckbox/SmallCardCheckbox";
 export { default as SubmitApplicationInfo } from "./SubmitApplicationInfo/SubmitApplicationInfo";
 export { default as TimeStep } from "./CreateOrder/TimeStep/TimeStep";

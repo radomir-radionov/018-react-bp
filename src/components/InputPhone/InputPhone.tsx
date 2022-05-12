@@ -8,13 +8,13 @@ interface IProps {
   label?: string;
   htmlFor?: string;
   type?: string;
+  mask: string | string[] | RegExp[];
   value?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  maxLength?: number;
 }
 
-const InputText = forwardRef(
+const InputPhone = forwardRef(
   (
     {
       className,
@@ -23,10 +23,10 @@ const InputText = forwardRef(
       label = "",
       htmlFor = "",
       type = "text",
+      mask,
       value,
       onChange,
       placeholder = "",
-      maxLength,
       ...rest
     }: IProps,
     ref
@@ -42,8 +42,8 @@ const InputText = forwardRef(
           disabled={disabled}
           onChange={onChange}
           placeholder={placeholder}
+          mask={mask}
           value={value}
-          maxLength={maxLength}
           name={htmlFor}
           type={type}
           ref={ref}
@@ -55,4 +55,4 @@ const InputText = forwardRef(
   }
 );
 
-export default InputText;
+export default InputPhone;

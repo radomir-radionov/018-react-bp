@@ -1,7 +1,10 @@
 export { default as Button } from "./Button/Button";
 export { default as ButtonImage } from "./ButtonImage/ButtonImage";
+export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as DatePicker } from "./DatePicker/DatePicker";
 export { default as ImageUploader } from "./ImageUploader/ImageUploader";
+export { default as InputPassword } from "./InputPassword/InputPassword";
+export { default as InputPhone } from "./InputPhone/InputPhone";
 export { default as InputText } from "./InputText/InputText";
 export { default as Map } from "./Map/Map";
 export { default as StepsLine } from "./StepsLine/StepsLine";

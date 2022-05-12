@@ -5,6 +5,8 @@ import {
   Main,
   NotFoundError,
   InternalServerError,
+  SignIn,
+  SignUp,
   Presentation,
 } from "pages";
 import { createOrderRoutes } from "./data";
@@ -19,6 +21,9 @@ const AppRouter = () => {
         <Page />
       </PrivateRoute> */}
       <Route path={pageRoutes.MAIN} element={<Main />} />
+
+      <Route path={pageRoutes.SIGNUP} element={<SignUp />} />
+      <Route path={pageRoutes.SIGNIN} element={<SignIn />} />
 
       {/* Create Order Routes */}
       {createOrderRoutes.map((path, index) => (

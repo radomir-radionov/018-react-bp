@@ -11,6 +11,13 @@ export const InputWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+
+  & > svg {
+    position: absolute;
+    top: 40px;
+    right: 14px;
+    cursor: pointer;
+  }
 `;
 
 export const LabelStyled = styled.label`

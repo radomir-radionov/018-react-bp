@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import InputMask from "react-input-mask";
 import { colors, typography } from "styles";
 
 interface IProps {
@@ -8,7 +9,6 @@ interface IProps {
 }
 
 export const InputWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
 `;
@@ -19,9 +19,7 @@ export const LabelStyled = styled.label`
   color: ${colors.DAY};
 `;
 
-export const InputStyled = styled.input.attrs(({ maxLength }) => ({
-  maxLength: maxLength,
-}))<IProps>`
+export const InputStyled = styled(InputMask)`
   max-height: 48px;
   padding: 14px 20px;
   border: 1px solid;

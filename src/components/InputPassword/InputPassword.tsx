@@ -1,4 +1,5 @@
-import { ChangeEvent, forwardRef } from "react";
+import { EyeCloseSVG, EyeSVG } from "assets";
+import { ChangeEvent, forwardRef, useState } from "react";
 import { ErrorMessage, InputStyled, InputWrapper, LabelStyled } from "./styles";
 
 interface IProps {
@@ -7,14 +8,14 @@ interface IProps {
   error?: string;
   label?: string;
   htmlFor?: string;
-  type?: string;
+  type?: "password" | "text";
   value?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   maxLength?: number;
 }
 
-const InputText = forwardRef(
+const InputPassword = forwardRef(
   (
     {
       className,
@@ -22,7 +23,7 @@ const InputText = forwardRef(
       error = "",
       label = "",
       htmlFor = "",
-      type = "text",
+      type = "password",
       value,
       onChange,
       placeholder = "",
@@ -31,12 +32,25 @@ const InputText = forwardRef(
     }: IProps,
     ref
   ) => {
+    const [fieldType, setFieldType] = useState<"password" | "text">(type);
+
+    const toggleShow = () => {
+      fieldType === "password"
+        ? setFieldType("text")
+        : setFieldType("password");
+    };
+
     return (
       <InputWrapper>
         {label && htmlFor && (
           <LabelStyled htmlFor={htmlFor}>{label}</LabelStyled>
         )}
         {label && !htmlFor && <LabelStyled>{label}</LabelStyled>}
+        {fieldType === "password" ? (
+          <EyeCloseSVG onClick={toggleShow} />
+        ) : (
+          <EyeSVG onClick={toggleShow} />
+        )}
         <InputStyled
           className={className}
           disabled={disabled}
@@ -45,7 +59,7 @@ const InputText = forwardRef(
           value={value}
           maxLength={maxLength}
           name={htmlFor}
-          type={type}
+          type={fieldType}
           ref={ref}
           {...rest}
         />
@@ -55,4 +69,4 @@ const InputText = forwardRef(
   }
 );
 
-export default InputText;
+export default InputPassword;

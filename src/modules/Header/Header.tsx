@@ -9,7 +9,6 @@ import {
   LogoWrapper,
   MenuIcon,
   MobileNavigation,
-  MyApplicationText,
   Navigation,
 } from "./styles";
 import pageRoutes from "constants/pageRoutes";
@@ -41,21 +40,21 @@ const Header = () => {
         </LogoWrapper>
         {!isOpenMenu && (
           <Navigation>
-            <MyApplicationText onClick={onClick}>Мои заявки</MyApplicationText>
+            {/* <MyApplicationText onClick={onClick}>Мои заявки</MyApplicationText> */}
             <Button onClick={onClick} variant={BUTTON_VARIANTS.SECONDARY}>
               Я — мастер
             </Button>
-            <Button onClick={onClick}>Войти</Button>
+            {/* <Button onClick={onClick}>Войти</Button> */}
           </Navigation>
         )}
       </HeaderStyled>
       {isOpenMenu && (
         <MobileNavigation>
-          <MyApplicationText onClick={onClick}>Мои заявки</MyApplicationText>
+          {/* <MyApplicationText onClick={onClick}>Мои заявки</MyApplicationText> */}
           <Button onClick={onClick} variant={BUTTON_VARIANTS.SECONDARY}>
             Я — мастер
           </Button>
-          <Button onClick={onClick}>Войти</Button>
+          {/* <Button onClick={onClick}>Войти</Button> */}
         </MobileNavigation>
       )}
     </>

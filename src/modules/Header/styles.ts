@@ -10,6 +10,7 @@ export const HeaderStyled = styled.header`
   height: 88px;
   padding: 0 120px;
   box-shadow: 0px 4px 20px ${colors.BOX_SHADOW_FOR_WHITE};
+  background-color: ${colors.DAY};
 
   @media (max-width: 900px) {
     padding: 0 27px;
