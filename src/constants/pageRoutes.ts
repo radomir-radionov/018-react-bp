@@ -11,7 +11,9 @@ enum pageRoutes {
   SIGNIN = "/account/signin",
   SIGNUP = "/account/create",
   VERIFY = "/account/verify",
-  FORGOT_PASSWORD = "/account/password/reset",
+  FORGOT_PASSWORD_PHONE = "/account/password/reset/phone",
+  FORGOT_PASSWORD_CODE = "/account/password/reset/code",
+  FORGOT_PASSWORD_CONFIRM = "/account/password/reset/confirm",
 
   FAQ = "/faq",
   TERMS_OF_USE = "/terms",

@@ -5,11 +5,12 @@ import {
   Main,
   NotFoundError,
   InternalServerError,
+  ResetPassword,
   SignIn,
   SignUp,
   Verify,
 } from "pages";
-import { createOrderRoutes } from "./data";
+import { createOrderRoutes, forgotPasswordRoutes } from "./data";
 
 // import PrivateRoute from './PrivateRoute';
 
@@ -26,6 +27,11 @@ const AppRouter = () => {
       <Route path={pageRoutes.VERIFY} element={<Verify />} />
       <Route path={pageRoutes.SIGNIN} element={<SignIn />} />
 
+      {/* Forgot Password Routes */}
+      {forgotPasswordRoutes.map((path, index) => (
+        <Route key={index} path={path} element={<ResetPassword />} />
+      ))}
+
       {/* Create Order Routes */}
       {createOrderRoutes.map((path, index) => (
         <Route key={index} path={path} element={<CreateOrder />} />
@@ -36,7 +42,6 @@ const AppRouter = () => {
         path={pageRoutes.INTERNAL_SERVER}
         element={<InternalServerError />}
       />
-      {/* Special case: if no route matched - show page 404 */}
       <Route path={pageRoutes.NOT_FOUND} element={<NotFoundError />} />
       <Route
         path="*"

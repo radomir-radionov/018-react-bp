@@ -1,12 +1,12 @@
 import { EyeCloseSVG, EyeSVG } from "assets";
-import { ChangeEvent, forwardRef, useState } from "react";
+import { ChangeEvent, forwardRef, ReactNode, useState } from "react";
 import { ErrorMessage, InputStyled, InputWrapper, LabelStyled } from "./styles";
 
 interface IProps {
   className?: string;
   disabled?: boolean;
   error?: string;
-  label?: string;
+  label?: string | ReactNode;
   htmlFor?: string;
   type?: "password" | "text";
   value?: string;
