@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { typography } from "styles";
+import { colors, typography } from "styles";
 
 export const DescriptionStepStyled = styled.div`
   padding-top: 16px;
@@ -31,4 +31,15 @@ export const ButtonsGroup = styled.div`
   & button:first-of-type {
     margin-right: 48px;
   }
+`;
+
+export const InputComment = styled.input`
+  width: 100%;
+  max-width: 720px;
+  padding: 18px 8px;
+  outline: none;
+  margin-bottom: 20px;
+  border: 1px solid ${colors.NIGHT_2};
+  border-radius: 8px;
+  transition-duration: 0.3s;
 `;

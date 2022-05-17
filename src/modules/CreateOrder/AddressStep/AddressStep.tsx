@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Map, StepsLine } from "components";
 import { BUTTON_VARIANTS } from "components/Button/types";
@@ -8,17 +9,16 @@ import {
   StepsLineWrapper,
   WhatText,
 } from "./styles";
+import { choosedAddressSelector } from "redux/address/selectors";
+import { createOrderActions } from "redux/createOrder";
 
 const AddressStep = () => {
   const navigate = useNavigate();
-
-  // const disabled: boolean = useMemo(
-  //   () => defineDisabled(isLastCardChoosed, value),
-  //   [isLastCardChoosed, value]
-  // );
+  const dispatch = useDispatch();
+  const choosedAddress: string = useSelector(choosedAddressSelector);
 
   const goToNextStep = () => {
-    navigate(pageRoutes.CREATE_ORDER_NOTIFICATION);
+    dispatch(createOrderActions.createOrderRequest());
   };
 
   const goToPreviousStep = () => {
@@ -36,7 +36,10 @@ const AddressStep = () => {
         <Button onClick={goToPreviousStep} variant={BUTTON_VARIANTS.SECONDARY}>
           Назад
         </Button>
-        <Button onClick={goToNextStep} disabled={false}>
+        <Button
+          onClick={goToNextStep}
+          disabled={Boolean(!choosedAddress.length)}
+        >
           Продолжить
         </Button>
       </ButtonsGroup>

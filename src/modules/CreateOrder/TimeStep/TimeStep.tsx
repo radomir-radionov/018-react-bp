@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createOrderActions } from "redux/createOrder";
 import { CostInformation, SmallCardCheckbox } from "modules";
-import { Button, DatePicker, StepsLine, TimePicker } from "components";
+import { Button, StepsLine, TimePicker } from "components";
 import { BUTTON_VARIANTS } from "components/Button/types";
 import pageRoutes from "constants/pageRoutes";
 import { smallCardsData } from "./data";
@@ -15,38 +15,52 @@ import {
   WhatText,
   TimeTitle,
 } from "./styles";
-import { dateSelector } from "redux/createOrder/selectors";
+import {
+  dateOrderSelector,
+  dateTypeSelector,
+  startTimeSelector,
+} from "redux/createOrder/selectors";
 
 const TimeStep = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const date: string = useSelector(dateSelector);
-  const [value, setValue] = useState<string>("");
-  const [isLastCardChoosed, setIsLastCardChoosed] = useState<boolean>(false);
-
-  const additionalInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
+  const dateType: string = useSelector(dateTypeSelector);
+  const startTime: Date = useSelector(startTimeSelector);
+  const dateOrder: Date = useSelector(dateOrderSelector);
+  const [isLastCard, setIsLastCard] = useState<boolean>(
+    dateType === smallCardsData[3].title
+  );
 
   const dateHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const choosedDate: string = smallCardsData[+event.target.id].title;
 
-    if (choosedDate !== date) {
-      if (smallCardsData[+event.target.id].title === smallCardsData[3].title) {
-        setIsLastCardChoosed(true);
-        dispatch(createOrderActions.setAdditionalDuration({ duration: value }));
-      } else {
-        setIsLastCardChoosed(false);
+    if (choosedDate !== dateType) {
+      if (smallCardsData[+event.target.id].title === smallCardsData[2].title) {
+        const today: Date = new Date();
+        const tomorrow: Date = new Date(today.setDate(today.getDate() + 1));
+
+        setIsLastCard(false);
+        dispatch(createOrderActions.setDateOrder(tomorrow));
       }
 
-      dispatch(createOrderActions.setDate({ date: choosedDate }));
+      if (smallCardsData[+event.target.id].title === smallCardsData[3].title) {
+        setIsLastCard(true);
+      } else {
+        setIsLastCard(false);
+        dispatch(createOrderActions.setDateOrder(new Date()));
+      }
+
+      dispatch(createOrderActions.setDateType(choosedDate));
     }
   };
 
-  // const disabled: boolean = useMemo(
-  //   () => defineDisabled(isLastCardChoosed, value),
-  //   [isLastCardChoosed, value]
-  // );
+  const onChangeTime = (time: Date) => {
+    dispatch(createOrderActions.setStartTime(time));
+  };
+
+  const onChangeDate = (date: Date) => {
+    dispatch(createOrderActions.setDateOrder(date));
+  };
 
   const goToNextStep = () => {
     navigate(pageRoutes.CREATE_ORDER_DESCRIPTION);
@@ -67,27 +81,28 @@ const TimeStep = () => {
           <SmallCardCheckbox
             key={index}
             id={`${index}`}
-            checked={date === title}
+            checked={dateType === title}
             title={title}
             insertInput={insertInput}
-            isLastCardChoosed={isLastCardChoosed && insertInput}
-            placeholder={"Укажите на сколько"}
-            onChange={additionalInputHandler}
+            isLastCard={isLastCard && insertInput}
+            datePicker={smallCardsData[3].title === title}
+            dateOrder={dateOrder}
+            onChangeDate={onChangeDate}
             onChangeInputCard={dateHandler}
           />
         ))}
       </CheckboxesWrapper>
-      <TimeTitle>Укажите время</TimeTitle>
-      <TimePicker />
-      <br />
-      <DatePicker />
+      {dateType !== smallCardsData[0].title && (
+        <>
+          <TimeTitle>Укажите время</TimeTitle>
+          <TimePicker value={startTime} onChange={onChangeTime} />
+        </>
+      )}
       <ButtonsGroup>
         <Button onClick={goToPreviousStep} variant={BUTTON_VARIANTS.SECONDARY}>
           Назад
         </Button>
-        <Button onClick={goToNextStep} disabled={false}>
-          Продолжить
-        </Button>
+        <Button onClick={goToNextStep}>Продолжить</Button>
       </ButtonsGroup>
       <CostInformation />
     </TimeStepStyled>

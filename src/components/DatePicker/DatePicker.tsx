@@ -1,25 +1,25 @@
-import { useState } from "react";
 import { CustomStyles, DatePickerStyled } from "./styles";
 import ru from "date-fns/locale/ru";
 
-// interface IProps {}
+interface IProps {
+  value?: Date;
+  onChange?: (date: Date) => void;
+}
 
-const DatePicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
-
-  const onChange = (date: any) => {
-    setStartDate(date);
-  };
-
+const DatePicker = ({ value, onChange }: IProps) => {
   return (
-    <CustomStyles>
-      <DatePickerStyled
-        selected={startDate}
-        onChange={onChange}
-        locale={ru}
-        dateFormat="dd MMMM, yyyy"
-      />
-    </CustomStyles>
+    <>
+      {onChange && (
+        <CustomStyles>
+          <DatePickerStyled
+            selected={value}
+            onChange={onChange}
+            locale={ru}
+            dateFormat="dd MMMM, yyyy"
+          />
+        </CustomStyles>
+      )}
+    </>
   );
 };
 

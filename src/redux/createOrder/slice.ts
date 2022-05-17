@@ -1,23 +1,34 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ICustomFile } from "components/ImageUploader/types";
 
 export interface ICreateOrderStateType {
   workTypes: string[];
   additionalWorkType: string;
-  employee: string;
-  additionalEmployee: string;
-  duration: string;
+  employeeType: string;
+  additionalEmployees: string;
+  numberOfEmployees: number;
+  durationType: string;
   additionalDuration: string;
-  date: string;
+  dateType: string;
+  startTime: Date;
+  dateOrder: Date;
+  descriptionOrder: string;
+  orderFiles: ICustomFile[];
 }
 
 const initialState: ICreateOrderStateType = {
   workTypes: [],
   additionalWorkType: "",
-  employee: "Один человек",
-  additionalEmployee: "",
-  duration: "До 2 часов",
+  employeeType: "Один человек",
+  numberOfEmployees: 0,
+  additionalEmployees: "",
+  durationType: "До 2 часов",
   additionalDuration: "",
-  date: "Сейчас",
+  dateType: "Сейчас",
+  startTime: new Date(),
+  dateOrder: new Date(),
+  descriptionOrder: "",
+  orderFiles: [],
 };
 
 const createOrderSlice = createSlice({
@@ -26,46 +37,80 @@ const createOrderSlice = createSlice({
   reducers: {
     setWorkTypes: (
       state: ICreateOrderStateType,
-      { payload }: PayloadAction<{ workTypes: string[] }>
+      { payload }: PayloadAction<string[]>
     ) => {
-      state.workTypes = payload.workTypes;
+      state.workTypes = payload;
     },
     setAdditionalWorkType: (
       state: ICreateOrderStateType,
-      { payload }: PayloadAction<{ workType: string }>
+      { payload }: PayloadAction<string>
     ) => {
-      state.additionalWorkType = payload.workType;
+      state.additionalWorkType = payload;
     },
-    setEmployee: (
+    setEmployeeType: (
       state: ICreateOrderStateType,
-      { payload }: PayloadAction<{ employee: string }>
+      { payload }: PayloadAction<string>
     ) => {
-      state.employee = payload.employee;
+      state.employeeType = payload;
     },
-    setAdditionalEmployee: (
+    setNumberOfEmployees: (
       state: ICreateOrderStateType,
-      { payload }: PayloadAction<{ employee: string }>
+      { payload }: PayloadAction<number>
     ) => {
-      state.additionalEmployee = payload.employee;
+      state.numberOfEmployees = payload;
     },
-    setDuration: (
+    setAdditionalEmployees: (
       state: ICreateOrderStateType,
-      { payload }: PayloadAction<{ duration: string }>
+      { payload }: PayloadAction<string>
     ) => {
-      state.duration = payload.duration;
+      state.additionalEmployees = payload;
+    },
+    setDurationType: (
+      state: ICreateOrderStateType,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.durationType = payload;
     },
     setAdditionalDuration: (
       state: ICreateOrderStateType,
-      { payload }: PayloadAction<{ duration: string }>
+      { payload }: PayloadAction<string>
     ) => {
-      state.additionalDuration = payload.duration;
+      state.additionalDuration = payload;
     },
-    setDate: (
+    setDateType: (
       state: ICreateOrderStateType,
-      { payload }: PayloadAction<{ date: string }>
+      { payload }: PayloadAction<string>
     ) => {
-      state.date = payload.date;
+      state.dateType = payload;
     },
+    setStartTime: (
+      state: ICreateOrderStateType,
+      { payload }: PayloadAction<Date>
+    ) => {
+      state.startTime = payload;
+    },
+    setDateOrder: (
+      state: ICreateOrderStateType,
+      { payload }: PayloadAction<Date>
+    ) => {
+      state.dateOrder = payload;
+    },
+    setDescriptionOrder: (
+      state: ICreateOrderStateType,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.descriptionOrder = payload;
+    },
+    setOrderFiles: (
+      state: ICreateOrderStateType,
+      { payload }: PayloadAction<ICustomFile[]>
+    ) => {
+      state.orderFiles = payload;
+    },
+    createOrderRequest: (
+      state: ICreateOrderStateType,
+      { payload }: PayloadAction
+    ) => {},
   },
 });
 

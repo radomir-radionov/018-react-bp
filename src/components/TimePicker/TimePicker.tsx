@@ -1,19 +1,15 @@
-import { useState } from "react";
 import { CustomStyles, TimePickerStyled } from "./styles";
 
-// interface IProps {}
+interface IProps {
+  value: Date;
+  onChange: (time: Date) => void;
+}
 
-const TimePicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
-
-  const onChange = (date: any) => {
-    setStartDate(date);
-  };
-
+const TimePicker = ({ value, onChange }: IProps) => {
   return (
     <CustomStyles>
       <TimePickerStyled
-        selected={startDate}
+        selected={value}
         onChange={onChange}
         showTimeSelect
         showTimeSelectOnly

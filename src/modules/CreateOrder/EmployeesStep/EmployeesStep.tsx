@@ -15,78 +15,82 @@ import {
   WhatText,
 } from "./styles";
 import {
-  employeeSelector,
-  durationSelector,
+  employeeTypeSelector,
+  durationTypeSelector,
+  additionalEmployeesSelector,
+  additionalDurationSelector,
 } from "redux/createOrder/selectors";
 
 const EmployeesStep = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const employee: string = useSelector(employeeSelector);
-  const duration: string = useSelector(durationSelector);
-  const [isLastCardChoosed, setIsLastCardChoosed] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
-  const [isSecondLastCardChoosed, setIsSecondLastCardChoosed] =
-    useState<boolean>(false);
-  const [durationValue, setDurationValue] = useState<string>("");
+  const employeeType: string = useSelector(employeeTypeSelector);
+  const additionalEmployees: string = useSelector(additionalEmployeesSelector);
+  const durationType: string = useSelector(durationTypeSelector);
+  const additionalDuration: string = useSelector(additionalDurationSelector);
+  const [isLastCard, setIsLastCard] = useState<boolean>(
+    employeeType === cardsData[3].title
+  );
+  const [isSecondLastCard, setIsSecondLastCard] = useState<boolean>(
+    durationType === smallCardsData[3].title
+  );
 
   const additionalInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    const value: string = event.target.value;
+    if (!isNaN(+value) && +value <= 2) {
+      dispatch(createOrderActions.setAdditionalEmployees(value));
+    }
   };
 
   const employeeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const choosedEmployee: string = cardsData[+event.target.id].title;
 
-    if (choosedEmployee !== employee) {
+    if (choosedEmployee !== employeeType) {
       if (cardsData[+event.target.id].title === cardsData[3].title) {
-        setIsLastCardChoosed(true);
-        dispatch(createOrderActions.setAdditionalEmployee({ employee: value }));
+        setIsLastCard(true);
       } else {
-        setIsLastCardChoosed(false);
+        const numberOfEmployees: number = +event.target.id + 1;
+        setIsLastCard(false);
+        dispatch(createOrderActions.setAdditionalEmployees(""));
+        dispatch(createOrderActions.setNumberOfEmployees(numberOfEmployees));
       }
 
-      dispatch(createOrderActions.setEmployee({ employee: choosedEmployee }));
+      dispatch(createOrderActions.setEmployeeType(choosedEmployee));
     }
   };
 
   const additionalSecondInputHandler = (
     event: ChangeEvent<HTMLInputElement>
   ) => {
-    setDurationValue(event.target.value);
+    if (!isNaN(+event.target.value)) {
+      dispatch(createOrderActions.setAdditionalDuration(event.target.value));
+    }
   };
 
   const durationHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const choosedDuration: string = smallCardsData[+event.target.id].title;
 
-    if (choosedDuration !== duration) {
+    if (choosedDuration !== durationType) {
       if (smallCardsData[+event.target.id].title === smallCardsData[3].title) {
-        setIsSecondLastCardChoosed(true);
-        dispatch(
-          createOrderActions.setAdditionalDuration({
-            duration: durationValue,
-          })
-        );
+        setIsSecondLastCard(true);
       } else {
-        setIsSecondLastCardChoosed(false);
+        dispatch(createOrderActions.setAdditionalDuration(""));
+        setIsSecondLastCard(false);
       }
 
-      dispatch(
-        createOrderActions.setDuration({
-          duration: choosedDuration,
-        })
-      );
+      dispatch(createOrderActions.setDurationType(choosedDuration));
     }
   };
 
   const disabled: boolean = useMemo(
     () =>
       defineDisabled(
-        isLastCardChoosed,
-        value,
-        isSecondLastCardChoosed,
-        durationValue
+        isLastCard,
+        additionalEmployees,
+        isSecondLastCard,
+        additionalDuration
       ),
-    [isLastCardChoosed, value, isSecondLastCardChoosed, durationValue]
+    [isLastCard, additionalEmployees, isSecondLastCard, additionalDuration]
   );
 
   const goToNextStep = () => {
@@ -108,12 +112,13 @@ const EmployeesStep = () => {
           <BigCardCheckbox
             key={index}
             id={`${index}`}
-            checked={employee === title}
+            checked={employeeType === title}
             title={title}
             image={image}
             insertInput={insertInput}
-            isLastCardChoosed={isLastCardChoosed && insertInput}
-            placeholder={"Тип работ"}
+            isLastCard={isLastCard && insertInput}
+            placeholder={"До двух человек включительно"}
+            value={additionalEmployees}
             onChange={additionalInputHandler}
             onChangeInputCard={employeeHandler}
           />
@@ -127,11 +132,12 @@ const EmployeesStep = () => {
           <SmallCardCheckbox
             key={index}
             id={`${index}`}
-            checked={duration === title}
+            checked={durationType === title}
             title={title}
             insertInput={insertInput}
-            isLastCardChoosed={isSecondLastCardChoosed && insertInput}
+            isLastCard={isSecondLastCard && insertInput}
             placeholder={"Укажите на сколько"}
+            value={additionalDuration}
             onChange={additionalSecondInputHandler}
             onChangeInputCard={durationHandler}
           />

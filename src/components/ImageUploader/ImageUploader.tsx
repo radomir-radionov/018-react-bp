@@ -1,6 +1,6 @@
-import { ButtonImage } from "components";
-import { memo, useState, MouseEvent } from "react";
+import { memo, MouseEvent } from "react";
 import { useDropzone } from "react-dropzone";
+import { ButtonImage } from "components";
 import { generateURL } from "./data";
 import {
   DropZone,
@@ -17,9 +17,12 @@ import {
 } from "./styles";
 import { ICustomFile } from "./types";
 
-function ImageUploader() {
-  const [files, setFiles] = useState<ICustomFile[]>([]);
+interface IProps {
+  files: ICustomFile[];
+  setFiles: (files: ICustomFile[]) => void;
+}
 
+function ImageUploader({ files, setFiles }: IProps) {
   const { getRootProps, getInputProps, open } = useDropzone({
     accept: { "image/*": [] },
     onDrop: (acceptedFiles: File[]) => {

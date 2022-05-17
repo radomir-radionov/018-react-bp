@@ -31,6 +31,10 @@ export const CheckboxesWrapper = styled.div`
   & > div {
     margin-right: 20px;
   }
+
+  @media (max-width: 1150px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ButtonsGroup = styled.div`
@@ -44,6 +48,10 @@ export const ButtonsGroup = styled.div`
 
 export const Remark = styled.p`
   ${typography.BODY2};
+
+  @media (max-width: 1250px) {
+    display: none;
+  }
 `;
 
 export const ErrorWrapper = styled.div`

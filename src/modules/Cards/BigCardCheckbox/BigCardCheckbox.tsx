@@ -14,8 +14,10 @@ interface IProps {
   title: string;
   image: FunctionComponent<SVGProps<SVGSVGElement>>;
   insertInput: boolean;
-  isLastCardChoosed: boolean;
+  isLastCard: boolean;
   placeholder?: string;
+  value?: string;
+  max?: number;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeInputCard: (event: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -26,8 +28,10 @@ const BigCardCheckbox = ({
   title,
   image,
   insertInput,
-  isLastCardChoosed,
+  isLastCard,
   placeholder = "",
+  value,
+  max,
   onChange,
   onChangeInputCard,
 }: IProps) => {
@@ -46,10 +50,12 @@ const BigCardCheckbox = ({
         <ImageSVG />
         <Text>{title}</Text>
       </Content>
-      {insertInput && isLastCardChoosed && (
+      {insertInput && isLastCard && (
         <AdditionalInput
           type="text"
           placeholder={placeholder}
+          maxLength={max}
+          value={value}
           onChange={onChange}
         />
       )}

@@ -20,45 +20,49 @@ import {
   WhatText,
 } from "./styles";
 import { AttentionOrangeSVG } from "assets";
+import { additionalWorkTypesSelector } from "redux/createOrder/selectors";
 
 const ChooseWorkStep = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const workTypes: string[] = useSelector(workTypesSelector);
-  const [isLastCardChoosed, setIsLastCardChoosed] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
+  const additionalWorkTypes: string = useSelector(additionalWorkTypesSelector);
+  const [isLastCard, setIsLastCard] = useState<boolean>(
+    workTypes.includes(checkboxesData[3].title)
+  );
 
   const additionalInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    dispatch(createOrderActions.setAdditionalWorkType(event.target.value));
   };
 
   const workTypesHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    if (checkboxesData[+event.target.id].title !== checkboxesData[3].title) {
-      const workType: string = checkboxesData[+event.target.id].title;
-      let newWorkTypes: string[] = [...workTypes];
+    const workType: string = checkboxesData[+event.target.id].title;
+    let newWorkTypes: string[] = [...workTypes];
 
-      if (workTypes.includes(workType)) {
-        const index: number = workTypes.findIndex((work) => work === workType);
-        newWorkTypes.splice(index, 1);
-      } else {
-        newWorkTypes.push(workType);
+    if (checkboxesData[+event.target.id].title === checkboxesData[3].title) {
+      setIsLastCard(!isLastCard);
+
+      if (!isLastCard) {
+        dispatch(createOrderActions.setAdditionalWorkType(""));
       }
-
-      dispatch(createOrderActions.setWorkTypes({ workTypes: newWorkTypes }));
-    } else {
-      setIsLastCardChoosed(!isLastCardChoosed);
     }
+
+    if (workTypes.includes(workType)) {
+      const index: number = workTypes.findIndex((work) => work === workType);
+      newWorkTypes.splice(index, 1);
+    } else {
+      newWorkTypes.push(workType);
+    }
+
+    dispatch(createOrderActions.setWorkTypes(newWorkTypes));
   };
 
   const disabled: boolean = useMemo(
-    () => defineDisabled(isLastCardChoosed, value, workTypes),
-    [isLastCardChoosed, value, workTypes]
+    () => defineDisabled(isLastCard, additionalWorkTypes, workTypes),
+    [isLastCard, additionalWorkTypes, workTypes]
   );
 
   const goToNextStep = () => {
-    if (isLastCardChoosed) {
-      dispatch(createOrderActions.setAdditionalWorkType({ workType: value }));
-    }
     navigate(pageRoutes.CREATE_ORDER_EMPLOYEES);
   };
 
@@ -88,14 +92,14 @@ const ChooseWorkStep = () => {
           <BigCardCheckbox
             key={index}
             id={`${index}`}
-            checked={
-              workTypes.includes(title) || (isLastCardChoosed && insertInput)
-            }
+            checked={workTypes.includes(title) || (isLastCard && insertInput)}
             title={title}
             image={image}
             insertInput={insertInput}
-            isLastCardChoosed={isLastCardChoosed && insertInput}
-            placeholder={"Тип работ"}
+            isLastCard={isLastCard && insertInput}
+            placeholder={"Тип работы"}
+            value={additionalWorkTypes}
+            max={40}
             onChange={additionalInputHandler}
             onChangeInputCard={workTypesHandler}
           />

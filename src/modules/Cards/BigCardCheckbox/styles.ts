@@ -6,6 +6,12 @@ export const Wrapper = styled.div`
   position: relative;
   width: 240px;
   height: 240px;
+
+  /* @media (max-width: 1150px) {
+    width: 136px;
+    height: 160px;
+    margin-bottom: 10px;
+  } */
 `;
 
 export const Input = styled.input`
@@ -40,6 +46,11 @@ export const Content = styled.div`
   border: 1px solid ${colors.NIGHT_2};
   border-radius: 8px;
   background-color: ${colors.DAY};
+
+  /* @media (max-width: 1150px) {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  } */
 `;
 
 export const CheckOrangeIcon = styled(CheckOrangeSVG)`
@@ -52,6 +63,10 @@ export const CheckOrangeIcon = styled(CheckOrangeSVG)`
 export const Text = styled.p`
   padding-top: 36px;
   ${typography.BODY2};
+
+  /* @media (max-width: 1150px) {
+    ${typography.BODY3};
+  } */
 `;
 
 export const AdditionalInput = styled.input`

@@ -8,6 +8,7 @@ export const DatePickerStyled = styled(ReactDatePicker)``;
 export const CustomStyles = styled.div`
   position: relative;
   width: fit-content;
+  border: none !important;
 
   & .react-datepicker-wrapper input {
     width: 240px;

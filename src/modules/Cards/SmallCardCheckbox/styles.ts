@@ -28,7 +28,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<{ $datePicker?: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -36,6 +36,7 @@ export const Content = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-bottom: ${({ $datePicker }) => ($datePicker ? "8px" : "0")};
   border: 1px solid ${colors.NIGHT_2};
   border-radius: 8px;
   background-color: ${colors.DAY};

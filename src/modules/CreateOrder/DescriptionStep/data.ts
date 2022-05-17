@@ -1,37 +1,8 @@
-export const defineDisabled = (
-  isFirstInputChoosed: boolean,
-  value: string,
-  isSecondInputChoosed: boolean,
-  secondValue: string
-): boolean => {
-  let disabled: boolean = false;
+import { ICustomFile } from "components/ImageUploader/types";
 
-  if (isFirstInputChoosed && value.length === 0) {
-    disabled = true;
-  }
+export const defineDisabled = (files: ICustomFile[]): boolean => {
+  const bytes: number = 5242880; // 5MB
+  const summ: number = files.reduce((acc, cur) => acc + cur.size, 0);
 
-  if (isSecondInputChoosed && secondValue.length === 0) {
-    disabled = true;
-  }
-
-  return disabled;
+  return bytes < summ;
 };
-
-export const smallCardsData = [
-  {
-    title: "Сейчас",
-    insertInput: false,
-  },
-  {
-    title: "Сегодня",
-    insertInput: false,
-  },
-  {
-    title: "Завтра",
-    insertInput: false,
-  },
-  {
-    title: "Другая дата",
-    insertInput: true,
-  },
-];

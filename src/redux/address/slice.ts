@@ -38,6 +38,7 @@ const addressSlice = createSlice({
       state.lon = payload.lon;
       state.foundAddresses = [];
     },
+    resetAddress: () => initialState,
   },
 });
 

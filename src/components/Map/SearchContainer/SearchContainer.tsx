@@ -15,9 +15,13 @@ const SearchContainer = ({ setPosition }: any) => {
 
   const searchHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const value: string = event.target.value;
-    setInputValue(value);
 
+    setInputValue(value);
     dispatch(addressActions.getAddressRequest({ value }));
+
+    if (!value.length) {
+      dispatch(addressActions.resetAddress());
+    }
   };
 
   const addressHandler = (event: MouseEvent<HTMLElement>) => {

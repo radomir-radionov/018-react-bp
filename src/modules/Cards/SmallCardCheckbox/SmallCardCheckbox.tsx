@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { DatePicker } from "components";
 import {
   AdditionalInput,
   CheckOrangeIcon,
@@ -13,9 +14,13 @@ interface IProps {
   checked: boolean;
   title: string;
   insertInput: boolean;
-  isLastCardChoosed: boolean;
+  isLastCard: boolean;
   placeholder?: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  datePicker?: boolean;
+  dateOrder?: Date;
+  onChangeDate?: (date: Date) => void;
+  value?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeInputCard: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -24,8 +29,12 @@ const SmallCardCheckbox = ({
   checked,
   title,
   insertInput,
-  isLastCardChoosed,
+  isLastCard,
   placeholder = "",
+  datePicker = false,
+  dateOrder,
+  onChangeDate,
+  value,
   onChange,
   onChangeInputCard,
 }: IProps) => {
@@ -37,16 +46,20 @@ const SmallCardCheckbox = ({
         onChange={onChangeInputCard}
         checked={checked}
       />
-      <Content>
+      <Content $datePicker={datePicker}>
         <CheckOrangeIcon />
         <Text>{title}</Text>
       </Content>
-      {insertInput && isLastCardChoosed && (
+      {insertInput && isLastCard && !datePicker && (
         <AdditionalInput
           type="text"
           placeholder={placeholder}
+          value={value}
           onChange={onChange}
         />
+      )}
+      {insertInput && isLastCard && datePicker && (
+        <DatePicker value={dateOrder} onChange={onChangeDate} />
       )}
     </Wrapper>
   );
