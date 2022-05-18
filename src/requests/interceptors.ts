@@ -1,7 +1,14 @@
 import axios from "axios";
 
+export const axiosPublic = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: true,
+  timeout: 10000,
+  validateStatus: (status) => status <= 300,
+});
+
 export const axiosPrivate = axios.create({
-  baseURL: process.env.REACT_APP_PRIVATE_URL,
+  baseURL: process.env.REACT_APP_API_URL,
   withCredentials: true,
   timeout: 10000,
   validateStatus: (status) => status <= 300,

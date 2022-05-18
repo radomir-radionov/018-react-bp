@@ -1,3 +1,4 @@
-export { getExample } from "./getExample";
-export { getAddressInfo } from "./getAddressInfo";
-export { postAddress } from "./postAddress";
+export { getAddressInfo } from "./address/getAddressInfo";
+export { postAddress } from "./address/postAddress";
+
+export { postCreateOrder } from "./order/postCreateOrder";
