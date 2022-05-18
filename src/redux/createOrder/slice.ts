@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICustomFile } from "components/ImageUploader/types";
+import { ICostOfWork } from "utils/getCostOfWork";
 
 export interface ICreateOrderStateType {
   workTypes: string[];
@@ -9,26 +10,32 @@ export interface ICreateOrderStateType {
   numberOfEmployees: number;
   durationType: string;
   additionalDuration: string;
+  numberOfDuration: number;
   dateType: string;
   startTime: Date;
   dateOrder: Date;
   descriptionOrder: string;
   orderFiles: ICustomFile[];
+  cost: number;
+  currency: string;
 }
 
 const initialState: ICreateOrderStateType = {
   workTypes: [],
   additionalWorkType: "",
   employeeType: "Один человек",
-  numberOfEmployees: 0,
+  numberOfEmployees: 1,
   additionalEmployees: "",
   durationType: "До 2 часов",
   additionalDuration: "",
+  numberOfDuration: 2,
   dateType: "Сейчас",
   startTime: new Date(),
   dateOrder: new Date(),
   descriptionOrder: "",
   orderFiles: [],
+  cost: 0,
+  currency: "",
 };
 
 const createOrderSlice = createSlice({
@@ -77,6 +84,12 @@ const createOrderSlice = createSlice({
     ) => {
       state.additionalDuration = payload;
     },
+    setNumberOfDuration: (
+      state: ICreateOrderStateType,
+      { payload }: PayloadAction<number>
+    ) => {
+      state.numberOfDuration = payload;
+    },
     setDateType: (
       state: ICreateOrderStateType,
       { payload }: PayloadAction<string>
@@ -106,6 +119,13 @@ const createOrderSlice = createSlice({
       { payload }: PayloadAction<ICustomFile[]>
     ) => {
       state.orderFiles = payload;
+    },
+    setCostOfWork: (
+      state: ICreateOrderStateType,
+      { payload }: PayloadAction<ICostOfWork>
+    ) => {
+      state.cost = payload.cost;
+      state.currency = payload.currency;
     },
     createOrderRequest: (
       state: ICreateOrderStateType,

@@ -3,6 +3,11 @@ import { IInitState } from "./slice";
 
 const addressSelector = (state: any) => state.address;
 
+export const addressStateSelector = createSelector(
+  addressSelector,
+  (address: IInitState) => address
+);
+
 export const foundAddressesSelector = createSelector(
   addressSelector,
   (address: IInitState) => address.foundAddresses

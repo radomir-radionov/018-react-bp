@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { createOrderStateSelector } from "redux/createOrder/selectors";
 import {
   Cost,
   CostInformationStyled,
@@ -7,6 +9,8 @@ import {
 } from "./styles";
 
 const CostInformation = () => {
+  const { cost, currency } = useSelector(createOrderStateSelector);
+
   return (
     <CostInformationStyled>
       <Description>
@@ -17,7 +21,7 @@ const CostInformation = () => {
       </Description>
       <Info>
         <Title>Ориентировочная стоимость работ:</Title>
-        <Cost>10 BYN</Cost>
+        <Cost>{`${cost} ${currency}`}</Cost>
       </Info>
     </CostInformationStyled>
   );

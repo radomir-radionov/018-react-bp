@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createOrderActions } from "redux/createOrder";
@@ -19,15 +19,20 @@ import {
   durationTypeSelector,
   additionalEmployeesSelector,
   additionalDurationSelector,
+  numberOfEmployeesSelector,
+  numberOfDurationSelector,
 } from "redux/createOrder/selectors";
+import { getCostOfWork, ICostOfWork } from "utils/getCostOfWork";
 
 const EmployeesStep = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const employeeType: string = useSelector(employeeTypeSelector);
   const additionalEmployees: string = useSelector(additionalEmployeesSelector);
+  const numberOfEmployees: number = useSelector(numberOfEmployeesSelector);
   const durationType: string = useSelector(durationTypeSelector);
   const additionalDuration: string = useSelector(additionalDurationSelector);
+  const numberOfDuration: number = useSelector(numberOfDurationSelector);
   const [isLastCard, setIsLastCard] = useState<boolean>(
     employeeType === cardsData[3].title
   );
@@ -64,6 +69,7 @@ const EmployeesStep = () => {
   ) => {
     if (!isNaN(+event.target.value)) {
       dispatch(createOrderActions.setAdditionalDuration(event.target.value));
+      dispatch(createOrderActions.setNumberOfDuration(0));
     }
   };
 
@@ -74,8 +80,10 @@ const EmployeesStep = () => {
       if (smallCardsData[+event.target.id].title === smallCardsData[3].title) {
         setIsSecondLastCard(true);
       } else {
-        dispatch(createOrderActions.setAdditionalDuration(""));
+        const numberOfDuration: number = +event.target.id + 2;
         setIsSecondLastCard(false);
+        dispatch(createOrderActions.setAdditionalDuration(""));
+        dispatch(createOrderActions.setNumberOfDuration(numberOfDuration));
       }
 
       dispatch(createOrderActions.setDurationType(choosedDuration));
@@ -100,6 +108,23 @@ const EmployeesStep = () => {
   const goToPreviousStep = () => {
     navigate(pageRoutes.CREATE_ORDER_CHOOSE_WORK);
   };
+
+  useEffect(() => {
+    const { cost, currency }: ICostOfWork = getCostOfWork(
+      numberOfEmployees,
+      additionalEmployees,
+      numberOfDuration,
+      additionalDuration
+    );
+
+    dispatch(createOrderActions.setCostOfWork({ cost, currency }));
+  }, [
+    dispatch,
+    numberOfEmployees,
+    additionalEmployees,
+    numberOfDuration,
+    additionalDuration,
+  ]);
 
   return (
     <EmployeesStepStyled>

@@ -43,6 +43,11 @@ export const additionalDurationSelector = createSelector(
   (createOrder: ICreateOrderStateType) => createOrder.additionalDuration
 );
 
+export const numberOfDurationSelector = createSelector(
+  createOrderSelector,
+  (createOrder: ICreateOrderStateType) => createOrder.numberOfDuration
+);
+
 export const dateTypeSelector = createSelector(
   createOrderSelector,
   (createOrder: ICreateOrderStateType) => createOrder.dateType
@@ -66,4 +71,9 @@ export const descriptionOrderSelector = createSelector(
 export const orderFilesSelector = createSelector(
   createOrderSelector,
   (createOrder: ICreateOrderStateType) => createOrder.orderFiles
+);
+
+export const costOfWorkSelector = createSelector(
+  createOrderSelector,
+  (createOrder: ICreateOrderStateType) => createOrder.cost
 );
